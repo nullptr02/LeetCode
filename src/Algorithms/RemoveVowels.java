@@ -7,14 +7,7 @@ public class RemoveVowels {
         String result = "";
         String vowels = "aeiouy";
 
-//        for (int j = 0; j < s.length(); j++) {
-//            if (s.charAt(j) != 'a' && s.charAt(j) != 'e' && s.charAt(j) != 'i' &&
-//                    s.charAt(j) != 'o' && s.charAt(j) != 'u') {
-//                result += s.charAt(j);
-//
-//            }
-//
-//        }
+
 
 
         return s.replace("a", "").replace("e", "").replace("i", "").replace("o", "").replace("u", "");
