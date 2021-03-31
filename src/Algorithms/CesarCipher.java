@@ -8,70 +8,73 @@ public class CesarCipher {
         String result = "";
         String copy = in;
         int stringSize = in.length();
-        int alphaSize = 26;
-        int copyShiftAmount = shiftAmt;
 
 
         for (int i = 0; i < stringSize; i++) {
 
             char c = in.charAt(i);
             int asciiValue = c;
-            //System.out.println(asciiValue);
 
             //For uppercase letters
             if (asciiValue >= 65 && asciiValue <= 90) {
-                int diff = Math.abs(65 - 90);
-                result += (char) ((c + shiftAmt) % diff);
-                //char temp = (char) ((c + shiftAmt) % diff);
-                //result += "" + temp;
-
+                int diff = Math.abs(65 - 90) + 1;
+                char encodedChar = (char) ('A' + (((c - 'A') + shiftAmt) % diff));
+                result += encodedChar;
 
             }
 
+
             //For lowercase letters
             if (asciiValue >= 97 && asciiValue <= 122) {
-                int diff = Math.abs(97 - 122);
-                result += (char) (c + shiftAmt) % diff;
-
+                int diff = Math.abs(97 - 122) + 1;
+                char encodedChar = (char) ('a' + (((c - 'a') + shiftAmt) % diff));
+                result += encodedChar;
 
             }
 
             //For symbols
             if (asciiValue >= 33 && asciiValue <= 47) {
-                int diff = Math.abs(33 - 47);
-                result += (char) (c + shiftAmt) % diff;
-
+                int diff = Math.abs(33 - 47) + 1;
+                char encodedChar = (char) ('!' + (((c - '!') + shiftAmt) % diff));
+                result += encodedChar;
 
             }
 
             //For numbers
             if (asciiValue >= 48 && asciiValue <= 57) {
-                int diff = Math.abs(48 - 57);
-                result += (char) (c + shiftAmt) % diff;
+                int diff = Math.abs(48 - 57) + 1;
+                char encodedChar = (char) ('0' + (((c - '0') + shiftAmt) % diff));
+                result += encodedChar;
             }
 
             //For other symbols
             if (asciiValue >= 91 && asciiValue <= 96) {
-                int diff = Math.abs(91 - 96);
-                result += (char) (c + shiftAmt) % diff;
-
+                int diff = Math.abs(91 - 96) + 1;
+                char encodedChar = (char) ('[' + (((c - '[') + shiftAmt) % diff));
+                result += encodedChar;
 
             }
 
             //For other symbols
             if (asciiValue >= 58 && asciiValue <= 64) {
-                int diff = Math.abs(64 - 58);
-                result += (char) (c + shiftAmt) % diff;
-
+                int diff = Math.abs(64 - 58) + 1;
+                char encodedChar = (char) (':' + (((c - ':') + shiftAmt) % diff));
+                result += encodedChar;
 
             }
 
             //For other symbols
             if (asciiValue >= 123 && asciiValue <= 126) {
-                int diff = Math.abs(126 - 123);
+                int diff = Math.abs(126 - 123) + 1;
+                char encodedChar = (char) ('{' + (((c - '{') + shiftAmt) % diff));
+                result += encodedChar;
 
-                result += (char) (c + shiftAmt) % diff;
+            }
 
+            //For white space
+            if (asciiValue == 32) {
+
+                result += ' ';
 
             }
         }
@@ -92,11 +95,14 @@ public class CesarCipher {
         CesarCipher u = new CesarCipher();
 
         String testOne = "Hello World~!";
-        int shiftOne = 1;
-        System.out.println(u.Encrypt(testOne, shiftOne));
-        char c = 'c' + 1;
+        String testTwo = "~";
 
-        System.out.println(c);
+        int shiftOne = 102;
+        //System.out.println(testOne);
+        System.out.println(u.Encrypt(testOne, shiftOne));
+        //System.out.println(u.Encrypt(testTwo, shiftOne));
+
+
     }
 
 
