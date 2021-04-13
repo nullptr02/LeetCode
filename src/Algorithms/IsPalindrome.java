@@ -49,10 +49,18 @@ public class IsPalindrome {
 
 
     public static void main(String[] args) {
-        String[] arrOfPalindromes = {"radar", "xyz", "abc", "racecar", "madam", "aslknnsc", "aba","abba"};
-        int [] arr ={1,2,3,3,45,5,6,7,7};
+        double startTime = System.nanoTime();
+
+
+        String[] arrOfPalindromes = {" ", "", "redivider", "Pearl", "Snow", "deified", "civic", "radar", "benji", "level", "rotor", "sugar", "kayak", "lucky", "reviver", "racecar", "husky", "madam", "refer", "Veronica", "Michael"};
+
         IsPalindrome u = new IsPalindrome();
         u.result(arrOfPalindromes);
+
+        double endTime = System.nanoTime();
+        double duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+        duration /= 1000000;
+        System.out.println(duration + " in milliseconds");
 
     }
 }
