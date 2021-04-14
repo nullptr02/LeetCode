@@ -2,36 +2,45 @@ package Algorithms;
 
 public class GreatestCommonDivisor {
 
-    public void calcGCD(int numberOne, int numberTwo) {
+    //Brute Force Method
+    public void calcGCDBruteForce(int numberOne, int numberTwo) {
 
-        int largestNumber = Math.max(numberOne, numberTwo);
         int smallerNumber = Math.min(numberOne, numberTwo);
-        int largestProduct = smallerNumber;
-        int product = 1;
+        int GCD = 0;
 
-        while (largestProduct < largestNumber) {
-            largestProduct *= product;
-            product++;
-
-            if (largestProduct > largestNumber) {
-                product-=2;
+        for (int i = 1; i < smallerNumber; i++) {
+            if (numberOne % i == 0 && numberTwo % i == 0) {
+                GCD = i;
             }
         }
 
-        System.out.println(smallerNumber * product);
-        int rem =  (product*smallerNumber);
-
-        while (rem >=0){
-            rem
-        }
-
+        System.out.println("Brute Force " + GCD);
 
 
     }
 
+    public void calcGCDRecursive(int numberOne, int numberTwo) {
+        int gcd = calcGCDRecursiveHelper(numberOne, numberTwo);
+        System.out.println("Recursive " + gcd);
+
+
+    }
+
+    public int calcGCDRecursiveHelper(int numberOne, int numberTwo) {
+
+
+        if (numberTwo == 0) {
+            return numberOne;
+        }
+
+        return calcGCDRecursiveHelper(numberTwo, numberOne % numberTwo);
+    }
+
     public static void main(String[] args) {
         GreatestCommonDivisor u = new GreatestCommonDivisor();
-        u.calcGCD(1071, 462);
+        u.calcGCDBruteForce(1071, 462);
+        u.calcGCDRecursive(1071, 462);
+        u.calcGCDRecursive(462, 1071);
 
     }
 }
