@@ -2,7 +2,7 @@ package AprilChallenge;
 
 public class ListNode {
     ListNode next;
-    int val;
+    int data;
 
     ListNode(int d) {
         data = d;

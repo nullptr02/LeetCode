@@ -62,41 +62,48 @@ public class LinkedList {
     }
 
     public static LinkedList partition(LinkedList list, int x) {
+        ListNode index = list.head;
+        LinkedList newList = new LinkedList();
 
-        // before and after are the two pointers used to create the two list
-        // before_head and after_head are used to save the heads of the two lists.
-        // All of these are initialized with the dummy nodes created.
-        ListNode before_head = new ListNode(0);
-        ListNode before = before_head;
-        ListNode after_head = new ListNode(0);
-        ListNode after = after_head;
 
-        while (head != null) {
-
-            // If the original list node is lesser than the given x,
-            // assign it to the before list.
-            if (head.val < x) {
-                before.next = head;
-                before = before.next;
-            } else {
-                // If the original list node is greater or equal to the given x,
-                // assign it to the after list.
-                after.next = head;
-                after = after.next;
+        // Copy all values less than target 'X' into 'newList'
+        while (index != null) {
+            int val = index.data;
+            if (val < x) {
+                newList = insert(newList, val);
             }
-
-            // move ahead in the original list
-            head = head.next;
+            index = index.next;
         }
 
-        // Last node of "after" list would also be ending node of the reformed list
-        after.next = null;
 
-        // Once all the nodes are correctly assigned to the two lists,
-        // combine them to form a single list which would be returned.
-        before.next = after_head.next;
+        // Get the last node and save it in a variable
+        ListNode last = newList.head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        ListNode newNode = new ListNode(6);
+        last.next = newNode;
 
-        return before_head.next;
+
+
+        // Loop through original list and add all values greater than or equal to target value
+        while (index != null) {
+
+            int val = index.data;
+            if (val >= x) {
+                newList = insert(newList, val);
+            }
+
+            index = index.next;
+            last = last.next;
+
+        }
+
+
+        printList(newList);
+
+
+        return newList;
     }
 
     public static void main(String[] args) {
