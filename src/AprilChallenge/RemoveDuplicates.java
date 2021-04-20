@@ -41,11 +41,7 @@ public class RemoveDuplicates {
                 String c = (String) index.getKey();
                 result += c;
             }
-
-
         }
-
-
         return result;
     }
 
