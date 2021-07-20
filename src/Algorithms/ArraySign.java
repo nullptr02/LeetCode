@@ -6,11 +6,11 @@ public class ArraySign {
 
         for (int i = 0; i < nums.length; i++) {
             int val = nums[i];
-            if(val == 0){
+            if (val == 0) {
                 return 0;
             }
 
-            if(val<0){
+            if (val < 0) {
                 positive = !positive;
             }
         }
